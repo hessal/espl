@@ -1,0 +1,19 @@
+ CC     = gcc
+    CFLAGS = -g
+
+all: complines
+
+complines: complines.o 
+            # Commands start with TAB not spaces
+	$(CC) $(LDFLAGS) -o $@ $^
+
+complines.o: complines.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+
+clean:
+	rm -f complines complines.o 
+
+    # This is GNU makefile extension to notify that roughly means: 'clean' does
+    # not depend on any files in order to call it.
+.PHONY: clean
