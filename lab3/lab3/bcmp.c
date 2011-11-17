@@ -24,15 +24,8 @@
 		while (((c = fgetc(fp1)) != EOF) &&( (c2=fgetc(fp2))!=EOF)){
 		    counter++;
 		    if(c!=c2){
-			printf("byte ");
-			printf("%d",counter);
-			printf(" ");
-			printf("%c",c);
-			printf ("  ");
-			printf("%c",c2);
-			printf(" ");
-			return;
-		      }
+			printf("byte %u -%u +%u\n", counter, c, c2);
+		    }
 		}
 	       
 	       
