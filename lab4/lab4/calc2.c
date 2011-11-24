@@ -3,7 +3,7 @@
 #include <assert.h>
 #include <string.h>
 
-int ato(char *num){
+/**int ato(char *num){
  int lastDigit; 
  int value=0;
  int a=1;
@@ -25,7 +25,7 @@ int ato(char *num){
   }
   return value;
 }
-
+*/
 int main(int argc, char **argv) {
 	int a, op, b, c;
 

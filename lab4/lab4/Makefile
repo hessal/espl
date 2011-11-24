@@ -10,7 +10,7 @@ all: strcmp calc2
 strcmp: strcmp.o hsvmhr.o
 	$(CC) -m32 $(LDFLAGS) -o $@ $^
 	
-calc: calc2.o 
+calc2: calc2.o ato.o
 	$(CC)  $(LDFLAGS) -o $@ $^	
 strcmp.o: strcmp.c 
 	$(CC) -m32 $(CFLAGS) -c -o $@ $<	
