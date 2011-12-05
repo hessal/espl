@@ -1,22 +1,22 @@
-section	.text
-    global readFile2			;must be declared for linker (ld)
-   ; global putStr
-	extern length			;length is implemented in length.c
-        extern readFile
-readFile2:					;tell linker entry point
-;putStr:
-      mov	eax,3
+section .text
+    global readFile2 ;must be declared for linker (ld)
+        extern bcmp2
+readFile2: ;tell linker entry point
        push ebp
        mov ebp, esp
-       mov ebx,[EBP+8]	;file name
-	mov ecx,buf
-	mov edx, 5
-	int	0x80	;call kernel
-	
+       
+       mov eax, 3
+       
+       mov ebx,[ebp+8] 
+       mov ecx,[ebp+12]
+       mov edx, [ebp+16]
+       int 0x80 ;call kernel
+       ;mov eax,ecx
+	;movzx ecx,al
+        mov eax,[ecx]
 	pop ebp
         ret
 
-section	.data
+section .data
 
-section .bss
-   buf     resb    1024
+    
