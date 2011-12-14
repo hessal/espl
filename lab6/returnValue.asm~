@@ -1,0 +1,16 @@
+section	.text
+    global returnValue			;must be declared for linker (ld)
+   
+			
+
+returnValue:					;tell linker entry point
+
+       push ebp
+       mov ebp, esp
+ 	sub [ebp+8],32
+	mov eax ,[ebp+8]
+	pop ebp
+        ret
+
+section	.data
+
