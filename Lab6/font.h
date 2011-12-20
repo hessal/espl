@@ -7,3 +7,4 @@ extern char *alphabet[][SYMBOL_HEIGHT];
 
 #endif
 
+
