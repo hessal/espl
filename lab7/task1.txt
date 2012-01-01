@@ -1,0 +1,5 @@
+#!/bin/sh
+for i in $(find $1 ); do
+         grep -l $2 $i
+         grep -A 3 -n $2 $i
+   done     

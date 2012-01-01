@@ -1,0 +1,10 @@
+/users/studs/bsc/2010/hessal/freespace/espl/lab1/prsym.c
+13:int main(int argc, char **argv) {
+14-	switch(argc) {
+15-	case 1: {
+16-			int idx;
+/users/studs/bsc/2010/hessal/freespace/espl/lab1/ascart.c
+6:int main(int argc, char **argv) {
+7-    int idx,i,j,size;
+8-    int iline;
+9-    int ans;
