@@ -1,0 +1,19 @@
+ CC = gcc-4.4
+    CFLAGS = -g
+
+all: elfheader2
+
+elfheader2: elfheader2.o
+# Commands start with TAB not spaces
+	$(CC) $(LDFLAGS) -o $@ $^
+
+elfheader2.o: elfheader2.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+
+clean:
+	rm -f elfheader2 elfheader2.o
+
+# This is GNU makefile extension to notify that roughly means: 'clean' does
+# not depend on any files in order to call it.
+.PHONY: clean
