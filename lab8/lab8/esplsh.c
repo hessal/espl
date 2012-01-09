@@ -113,7 +113,7 @@ void run_program() {
 	char tmp= *(argv[i]);
 	  if(tmp=='|'){
 	     c2=tmp;
-	    index=i;
+	     index=i;
 	    if((pid2=fork())==0){
 	      dup2(p[0],0);
 	      execvp(argv[i+1],argv+i+1);
@@ -121,8 +121,7 @@ void run_program() {
         }
      }
     
-  
-  if(((pid=fork())>0) &(pid2>0) ) {
+   if(((pid=fork())>0) &(pid2>0) ) {
     waitpid(pid, &status, 0);
     sprintf(ststr, "%d", status);
     setenv("?", ststr, 1);
@@ -130,31 +129,22 @@ void run_program() {
   else if(pid==0) {
     char c= *(argv[argc-2]);
      if (c2=='|') {
-        int fd2 = p[1];
-     
-	dup2(fd2,1);
+       dup2(p[1],1);
           argv[index]='\0';
-      
       } 
-      
-      if (c=='<'){
+     if (c=='<'){
          int fd = open(argv[argc-1],O_RDONLY); 
          dup2(fd,0);
          argv[argc-2]= '\0';
          close(fd);
       }
-    
-    else if(c=='>') {
+     else if(c=='>') {
         int fdout = open(argv[argc-1],O_WRONLY|O_TRUNC|O_CREAT , S_IRUSR|S_IWUSR);
         close(1);
         dup2(fdout,1);
         argv[argc-2]= '\0';
         close(fdout);
     }
-    
-    
-    else{printf("eror\n");}
-
     execvp(argv[0], argv);
     perror(argv[0]);
   }
