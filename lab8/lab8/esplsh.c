@@ -105,13 +105,15 @@ void run_program() {
   /* TODO: background commands */
   
     int p[2];
-    if(pipe(p)==-1)
-	printf("pipe eror");
+   // if(pipe(p)==-1)
+//	printf("pipe eror");
      char c2;
      int i;
       for (i=0; i<argc; ++i){
 	char tmp= *(argv[i]);
 	  if(tmp=='|'){
+	      if(pipe(p)==-1)
+	         printf("pipe eror");
 	     c2=tmp;
 	     index=i;
 	    if((pid2=fork())==0){
@@ -140,7 +142,7 @@ void run_program() {
       }
      else if(c=='>') {
         int fdout = open(argv[argc-1],O_WRONLY|O_TRUNC|O_CREAT , S_IRUSR|S_IWUSR);
-        close(1);
+        close(0);
         dup2(fdout,1);
         argv[argc-2]= '\0';
         close(fdout);
